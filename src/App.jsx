@@ -4,16 +4,22 @@ import Form from  './components/Form';
 import Weather from  './components/Weather';
 import './App.css';
 
-const API_KEY  = f9b6f6ec6c33bfc5a154cdc19f667016;
-
+//  Added You Own Api Key.
+const API_KEY = "";
 
 class App extends Component {
 
-  getWeather = async () => {
-    const api_fetch = await fetch()
-  }
-  const data = await api_fetch.JSON();
+  getWeather = async (e) => {
+    e.preventDefault()
+  const api_fetch = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Philadelphia,uk&appid=${API_KEY}
+  &units=metric`)
+
+  const data = await api_fetch.json();
+
   console.log(data);
+
+  }
+
 
   render() {
     return (
