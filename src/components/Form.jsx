@@ -3,9 +3,13 @@ import React, { Component } from 'react'
 export class Form extends Component {
   render() {
     return (
-      <div>
-        Be on the look out...
-      </div>
+    
+        <form onSubmit ={this.props.getWeather}>
+          <input type="text" name="city" placeholder="City..."/>
+          <input type="text" name="city" placeholder="City..."/>
+          <button>Get Weather</button>
+        </form>
+      
     )
   }
 }
