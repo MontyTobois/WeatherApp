@@ -4,7 +4,10 @@ export class Weather extends Component {
   render() {
     return (
       <div>
-        The strom is coming...
+       <p>Location: { this.props.city },{ this.props.country }</p> 
+       <p>Temperature: { this.props.temperature }</p> 
+       <p>Humdity: { this.props.humdmity }</p> 
+      <p>Conditions: { this.props.description }</p>
       </div>
     )
   }

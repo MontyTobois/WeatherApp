@@ -5,7 +5,7 @@ import Weather from  './components/Weather';
 import './App.css';
 
 //  Added You Own Api Key.
-const API_KEY = "2c76e45c74caa212c1f0ebfdf66025d0";
+const API_KEY = "XXXXXXXXXXXXXXXXX";
 
 class App extends Component {
   state = {
@@ -21,13 +21,18 @@ class App extends Component {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
-  const api_fetch = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}
-  &units=metric`)
-
-  const data = await api_fetch.json();
-
-  console.log(data);
-
+    const api_fetch = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}
+    &units=metric`)
+    const data = await api_fetch.json();
+    console.log(data);
+    this.setState({
+      temperature: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humdity: data.main.humdity,
+      description:  data.weather[0].description,
+      error: ""
+    })
   }
 
 
@@ -36,7 +41,14 @@ class App extends Component {
       <div className="App">
       <Titles  />
       <Form  getWeather={this.getWeather}/>
-      <Weather />
+      <Weather 
+        temperature={this.state.temperature}
+        city={this.state.city}
+        country={this.state.country}
+        humdity={this.state.humdity}
+        description={this.state.description}
+        error={this.state.error}
+        />
       </div>
     );
   }
